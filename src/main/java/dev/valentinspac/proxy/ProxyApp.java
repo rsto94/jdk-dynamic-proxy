@@ -12,27 +12,27 @@ public class ProxyApp {
         ProxyFactory proxyFactory = new ProxyFactory(ProxyApp.class.getPackage());
 
         File file = new File("SongPath");
-        Playable player = proxyFactory.getBean(Playable.class);
-        System.out.println("business.play(file.getPath())");
-        System.out.println(player.play(file.getPath()));
+        Playable playable = proxyFactory.getBean(Playable.class);
+        System.out.println("playable.play(file.getPath())");
+        playable.play(file.getPath());
 
         System.out.println();
-        System.out.println("business.play(file)");
-        System.out.println(player.play(file));
+        System.out.println("playable.play(file)");
+        playable.play(file);
 
         System.out.println();
-        System.out.println("business.play(file, 10)");
-        System.out.println(player.play(file, 10));
+        System.out.println("playable.play(file, 10)");
+        playable.play(file, 10);
 
         System.out.println();
-        System.out.println("business.play(file, 10, 15)");
-        System.out.println(player.play(file, 10, 15));
+        System.out.println("playable.play(file, 10, 15)");
+        playable.play(file, 10, 15);
 
 
         Seekable seekablePlayer = proxyFactory.getBean(Seekable.class);
         System.out.println();
         System.out.println("seekablePlayer.seekTo(20)");
-        System.out.println(seekablePlayer.seekTo(20));
+        seekablePlayer.seekTo(20);
     }
 
 }

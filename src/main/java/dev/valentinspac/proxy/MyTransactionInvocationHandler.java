@@ -24,8 +24,9 @@ public class MyTransactionInvocationHandler implements InvocationHandler {
         Method targetMethod = getOverriddenMethod(method);
 
         return getTransactionalMethod(targetMethod)
-                .map(annotation -> handleTransactionalMethod(method, args, annotation))
-                .orElseGet(() -> uncheckedInvoke(method, args));
+                .map(annotation -> Optional.ofNullable(handleTransactionalMethod(method, args, annotation)))
+                .orElseGet(() -> Optional.ofNullable(uncheckedInvoke(method, args)))
+                .orElse(null);
 
     }
 
